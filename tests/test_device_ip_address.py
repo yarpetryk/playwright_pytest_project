@@ -1,6 +1,6 @@
 import pytest
 
-from playwright.sync_api import Page, expect
+from playwright.sync_api import expect
 from pages.start_page import StartPage
 from pages.devices_page import DevicesPage
 from helpers.constants import DeviceCredentials
@@ -14,12 +14,15 @@ class TestDeviceConfig:
     @pytest.mark.parametrize('device_id', [DeviceCredentials.DEVICEID,
                                            pytest.param(DeviceCredentials.DEVICEID_2, marks=pytest.mark.xfail)])
     def test_ip_address(self,
+                        page,
                         device_id: str,
                         login_set_up,
                         start_page: StartPage,
-                        devices_page: DevicesPage) -> None:
+                        devices_page: DevicesPage,
+                        assert_snapshot) -> None:
 
         # Proceed to devices tab
+        # assert_snapshot(page.screenshot())
         start_page.proceed_to_devices_tab()
 
         # Proceed to device details page

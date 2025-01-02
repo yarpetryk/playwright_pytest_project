@@ -1,6 +1,8 @@
 import pytest
+from typing import Generator
 
-from playwright.sync_api import Page, expect
+
+from playwright.sync_api import Playwright, Page, expect, APIRequestContext
 from helpers.constants import UserCredentials, WebPageUrl
 from pages.start_page import StartPage
 from pages.devices_page import DevicesPage
@@ -14,7 +16,7 @@ def start_page(page: Page) -> StartPage:
 def devices_page(page: Page) -> DevicesPage:
     return DevicesPage(page)
 
-@pytest.fixture()
+@pytest.fixture
 # def login_set_up(page: Page, url: str) -> None:
 def login_set_up(page: Page) -> Page:
     username_input = page.locator('#Username')
@@ -29,3 +31,14 @@ def login_set_up(page: Page) -> Page:
     expect(logout_button).to_be_visible()
     yield page
     page.close()
+
+@pytest.fixture()
+def api_request_context(playwright: Playwright) -> APIRequestContext:
+    request_context = playwright.request.new_context(
+        base_url="https://backend.powerfox.energy",
+        http_credentials={
+            'username': 'lsqateam@gmail.com',
+            'password': 'Abc123!!'
+        })
+    return request_context
+

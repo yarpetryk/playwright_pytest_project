@@ -133,9 +133,11 @@ pytest -n 3
 ```
 context.storage_state(path='state.json')
 ```
+### Visual comparison
+```
+pytest-playwright-visual
+assert_snapshot(page.screenshot())
 
-@pytest.mark.skip_browser('chromium')
-@pytest.mark.only_browser('chromium')
 ```
 ### Run an Allure report generation
 1. Download and extract Allure into the Program Files (https://github.com/allure-framework/allure2/releases/)

@@ -1,8 +1,8 @@
 import pytest
-from typing import Generator
+import re
 
 
-from playwright.sync_api import Playwright, Page, expect, APIRequestContext
+from playwright.sync_api import Playwright, Page, expect, APIRequestContext, Route
 from helpers.constants import UserCredentials, WebPageUrl
 from pages.start_page import StartPage
 from pages.devices_page import DevicesPage
@@ -32,7 +32,7 @@ def login_set_up(page: Page) -> Page:
     yield page
     page.close()
 
-@pytest.fixture()
+@pytest.fixture
 def api_request_context(playwright: Playwright) -> APIRequestContext:
     request_context = playwright.request.new_context(
         base_url="https://backend.powerfox.energy",
@@ -42,3 +42,14 @@ def api_request_context(playwright: Playwright) -> APIRequestContext:
         })
     return request_context
 
+@pytest.fixture
+def mock_server_response(page: Page):
+    data = {
+
+    }
+    page.on('request', lambda request: print(request.method, request.url))
+    page.on('response', lambda response: print(response.status, response.url))
+    page.route("https://portal.powerfox.energy/Admin/Devices", lambda status_code: status_code.fulfill(status=401))
+    page.route("https://portal.powerfox.energy/Admin/Devices", lambda response: response.fulfill(json=data))
+    page.route("https://portal.powerfox.energy/Admin/Devices", lambda response: response.fulfill(path="mock_data.html"))
+    yield page

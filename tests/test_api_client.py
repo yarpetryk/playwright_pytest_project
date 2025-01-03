@@ -12,14 +12,16 @@ class TestApiClient:
         for el in data:
             assert el['division'] in range(5)
 
-    @pytest.mark.api
+    @pytest.mark.api_1
     def test_api_operating(self,
+                           mock_server_response,
                            api_request_context: APIRequestContext) -> None:
         body = {
             "deviceId": "1097bd6e54f4",
             "extended": True
         }
         res = api_request_context.post("/api/3.0//current/0/operating", data=body)
+        print(res.status)
         data = res.json()
         assert data['watt'] < 100
 

@@ -79,9 +79,9 @@ new browser tab -> def test_login(context) -> page_1 = context.new_page(), page_
 
 ### Playwright Network Events
 ```
-page.on('request', lambda request: print(request.method, request.url)
+page.on('request', lambda request: print(request.method, request.url))
 page.on("requestfailed", lambda request: print(request.url + " " + request.failure.error_text))
-page.on('response', lambda response: print(response.status, response.url)
+page.on('response', lambda response: print(response.status, response.url))clear
 page.on("dialog", lambda dialog: dialog.accept())
 page.on ('load', handler)
 page.on("domcontentloaded", handler)

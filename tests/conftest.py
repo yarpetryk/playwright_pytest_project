@@ -1,5 +1,6 @@
 import pytest
 from logging import info, debug, warning, error
+import os
 
 
 from playwright.sync_api import Playwright, Page, expect, APIRequestContext, Route
@@ -31,6 +32,7 @@ def login_set_up(page: Page) -> Page:
     login_button.click()
     expect(logout_button).to_be_visible()
     info("User logged in successfully")
+    info(os.getcwd())
     yield page
     page.close()
 

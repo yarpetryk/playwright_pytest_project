@@ -35,6 +35,7 @@ jobs:
         pytest -m smoke_
         
     - name: Upload artifacts
+      uses: softprops/action-gh-release@v2
       with:
         files: |
           build/pytest_report/report.html

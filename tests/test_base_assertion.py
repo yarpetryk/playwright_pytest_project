@@ -8,7 +8,7 @@ class TestBase:
         assert 10 == 10
         info("Positive assertion")
 
-    @pytest.mark.smoke
+    @pytest.mark.smoke_
     def test_negative_assert(self) -> None:
         a = 9
         b = 10

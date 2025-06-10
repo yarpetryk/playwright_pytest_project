@@ -32,17 +32,18 @@ jobs:
       run: |
         pytest -m smoke_
 
-    - name: Upload Pytest artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Pytest report
-        path: logs/*.log
-        overwrite: true
-        if-no-files-found: error
-
     - name: Publish JUnit Test Report
       uses: mikepenz/action-junit-report@v5
       if: always()
       with:
         report_paths: '**/junit_reports/report.xml'
+
+    - name: Publish Allure report
+      uses: peaceiris/actions-gh-pages@v3 # Use v3 or latest stable version
+      if: github.ref == 'refs/heads/main' # Only deploy from your main branch
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: allure-report
+        publish_branch: gh-pages # Or the branch where your GitHub Pages is configured
+        force_orphan: true # Overwrites previous content on gh-pages branch
 

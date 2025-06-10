@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Pytest report
-        path: '**/pytest_report/report.html'
+        path: '**/pytest_reports/report.html'
 
     - name: Publish JUnit Test Report
       uses: mikepenz/action-junit-report@v5

@@ -32,7 +32,7 @@ def login_set_up(page: Page) -> Page:
     login_button.click()
     expect(logout_button).to_be_visible()
     info("User logged in successfully")
-    info(os.getcwd())
+    info(os.listdir())
     yield page
     page.close()
 

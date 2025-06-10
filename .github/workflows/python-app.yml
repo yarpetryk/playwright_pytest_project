@@ -40,9 +40,8 @@ jobs:
         report_paths: '**/junit_reports/report.xml'
 
     - name: Upload Pytest artifacts
-      uses: softprops/action-gh-release@v2
+      uses: actions/upload-artifact@v4
       with:
-          files: |
-            **/pytest_report/report.html
-          reporter: jest-junit
-      
+        files: |
+          **/pytest_report/report.html
+

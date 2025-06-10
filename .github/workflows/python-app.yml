@@ -33,10 +33,10 @@ jobs:
         pytest -m smoke_
 
     - name: Upload Pytest artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: Pytest report
-        path: requirements.txt
+        path: ./requirements.txt
 
     - name: Publish JUnit Test Report
       uses: mikepenz/action-junit-report@v5

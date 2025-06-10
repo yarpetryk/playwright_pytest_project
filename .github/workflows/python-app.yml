@@ -1,0 +1,71 @@
+name: Playwright Pytest App
+
+on:
+  push:
+    branches:
+      - main # or your main branch
+
+jobs:
+  run_tests_and_publish_report:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Important for Allure history to work correctly
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests with Allure results
+      run: |
+        pytest -m smoke_
+
+    - name: Get Allure history
+      uses: actions/checkout@v4
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages # The branch where your Allure report will be published
+        path: gh-pages
+
+    - name: Build Allure Report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_history: allure-history # Directory where the report will be built
+
+    - name: Publish Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages # The branch to publish to
+        publish_dir: allure-history # The directory containing the generated report
+        keep_files: false # Overwrite existing files
+
+    - name: Post report link to GitHub Checks
+      uses: Sibz/github-status-action@v1
+      if: always()
+      with:
+        authToken: ${{ secrets.GITHUB_TOKEN }}
+        context: 'Allure Test Report'
+        state: 'success' # Or 'failure' if tests fail
+        sha: ${{ github.event.pull_request.head.sha || github.sha }}
+        target_url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/ # Adjust if your GitHub Pages URL is different

@@ -13,6 +13,13 @@ jobs:
       contents: write
       pages: write
       id-token: write
+      repository-projects: write
+
+    print-token:
+      permissions: write-all
+      name: print-token
+      environment: dev
+
 
     steps:
     - name: Checkout repository

@@ -1,5 +1,5 @@
 import pytest
-import re
+from logging import info, debug, warning, error
 
 
 from playwright.sync_api import Playwright, Page, expect, APIRequestContext, Route
@@ -25,10 +25,12 @@ def login_set_up(page: Page) -> Page:
     logout_button = page.get_by_role("link", name="Abmelden")
     page.goto(WebPageUrl.START_PAGE)
     page.wait_for_load_state('networkidle')
+    info(f"The webpage {WebPageUrl.START_PAGE} has been loaded successfully")
     username_input.fill(UserCredentials.USERNAME)
     password_input.fill(UserCredentials.PASSWORD)
     login_button.click()
     expect(logout_button).to_be_visible()
+    info("User logged in successfully")
     yield page
     page.close()
 

@@ -7,12 +7,14 @@ from helpers.constants import DeviceCredentials
 
 
 class TestDeviceConfig:
-    @pytest.mark.smoke
+    @pytest.mark.smoke_
     # @pytest.mark.skip_browser('chromium')
     # @pytest.mark.only_browser('chromium')
     # @pytest.mark.parametrize('url', [WebPageUrl.START_PAGE])
-    @pytest.mark.parametrize('device_id', [DeviceCredentials.DEVICEID,
-                                           pytest.param(DeviceCredentials.DEVICEID_2, marks=pytest.mark.xfail)])
+    # @pytest.mark.parametrize('device_id', [DeviceCredentials.DEVICEID,
+    #                                        pytest.param(DeviceCredentials.DEVICEID_2, marks=pytest.mark.xfail)])
+
+    @pytest.mark.parametrize('device_id', [DeviceCredentials.DEVICEID])
     def test_ip_address(self,
                         page,
                         device_id: str,

@@ -9,5 +9,8 @@
 #idea
 /.idea/*
 
-#allure report
+#test reports & logs
 /allure-results/*
+/junit-reports/*
+/pytest-reports/*
+/logs/*

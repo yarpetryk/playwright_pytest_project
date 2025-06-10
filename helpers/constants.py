@@ -1,7 +1,7 @@
 
 
 class UserCredentials:
-    USERNAME = 'lsqateam@gmail.com'
+    USERNAME = 'lsqateam+100@gmail.com'
     PASSWORD = 'Abc123!!'
 
 class DeviceCredentials:
@@ -12,3 +12,4 @@ class WebPageUrl:
     START_PAGE = 'https://portal.powerfox.energy/'
     DEVICES_PAGE = 'https://portal.powerfox.energy/Admin/Devices'
     SPECIFIC_DEVICE_PAGE = 'https://portal.powerfox.energy/Admin/Devices/Details/'
+    POWERFOX_PAGE = 'https://powerfox.energy'

@@ -47,3 +47,9 @@ jobs:
         publish_branch: gh-pages # Or the branch where your GitHub Pages is configured
         force_orphan: true # Overwrites previous content on gh-pages branch
 
+    - name: Upload Allure Report as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-results/
+

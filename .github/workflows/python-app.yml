@@ -47,9 +47,18 @@ jobs:
         publish_branch: gh-pages # Or the branch where your GitHub Pages is configured
         force_orphan: true # Overwrites previous content on gh-pages branch
 
-    - name: Upload Allure Report as Artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
-        path: pytest-reports/
+        path: allure-results/
+
+    - name: Publish Allure test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ always() && (steps.allure-report.outcome == 'success') }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ${{ steps.allure-report.outputs.reports-site }}
+        destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 

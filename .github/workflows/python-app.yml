@@ -37,6 +37,8 @@ jobs:
       with:
         name: Pytest report
         path: ./requirements.txt
+        overwrite: true
+        if-no-files-found: error
 
     - name: Publish JUnit Test Report
       uses: mikepenz/action-junit-report@v5

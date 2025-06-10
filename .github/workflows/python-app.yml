@@ -38,7 +38,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          build/pytest_report/report.html
+          build/*/pytest_report/report.html
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

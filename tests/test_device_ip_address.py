@@ -7,7 +7,7 @@ from helpers.constants import DeviceCredentials
 
 
 class TestDeviceConfig:
-    @pytest.mark.smoke_
+    @pytest.mark.smoke
     # @pytest.mark.skip_browser('chromium')
     # @pytest.mark.only_browser('chromium')
     # @pytest.mark.parametrize('url', [WebPageUrl.START_PAGE])

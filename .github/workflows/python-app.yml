@@ -8,6 +8,8 @@ on:
 jobs:
   run_tests_and_publish_report:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN : ${{ github.token}}
 
     permissions:
       contents: write

@@ -11,11 +11,7 @@ jobs:
     env:
       GITHUB_TOKEN : ${{ github.token}}
 
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-      repository-projects: write
+    permissions: write-all
 
     steps:
     - name: Checkout repository
@@ -37,6 +33,15 @@ jobs:
     - name: Run tests
       run: |
         pytest -m smoke_
+        
+    - name: Upload artifacts
+      with:
+        files: |
+          build/pytest_report/report.html
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v5
       if: success() || failure()

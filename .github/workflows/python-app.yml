@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Pytest report
-        path: ./requirements.txt
+        path: build/requirements.txt
         overwrite: true
         if-no-files-found: error
 

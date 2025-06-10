@@ -48,3 +48,4 @@ jobs:
       if: always()
       with:
         report_paths: '**/build/junit_reports/report.xml'
+        token: ${{ secrets.GITHUB_TOKEN }}

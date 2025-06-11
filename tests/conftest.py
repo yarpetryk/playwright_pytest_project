@@ -1,6 +1,5 @@
 import pytest
-from logging import info, debug, warning, error
-import os
+from logging import info
 
 
 from playwright.sync_api import Playwright, Page, expect, APIRequestContext, Route
@@ -34,8 +33,6 @@ def login_set_up(page: Page) -> Page:
     info("User logged in successfully")
     yield page
     page.close()
-    info(os.getcwd())
-    info(os.listdir())
 
 @pytest.fixture
 def api_request_context(playwright: Playwright) -> APIRequestContext:

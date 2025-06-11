@@ -42,8 +42,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
-        path: requirements.txt
+        path: allure_results/
         overwrite: true
+        if-no-files-found: error
 
     - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3

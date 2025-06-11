@@ -10,7 +10,7 @@
 /.idea/*
 
 #test reports & logs
-/allure-results/*
-/junit-reports/*
-/pytest-reports/*
+/allure_results/*
+/junit_reports/*
+/pytest_reports/*
 /logs/*

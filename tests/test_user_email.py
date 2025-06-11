@@ -5,7 +5,7 @@ from pages.start_page import StartPage
 
 
 class TestUseEmail:
-    @pytest.mark.smoke_
+    @pytest.mark.smoke
     def test_user_email(self,
                         page,
                         login_set_up,

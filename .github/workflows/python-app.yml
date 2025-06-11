@@ -38,12 +38,6 @@ jobs:
       with:
         report_paths: '**/junit_reports/report.xml'
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-report
-        path: allure-results/
-
     - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3
       if: always()
@@ -52,4 +46,10 @@ jobs:
         publish_branch: gh-pages
         publish_dir: allure-results/
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-results/
 

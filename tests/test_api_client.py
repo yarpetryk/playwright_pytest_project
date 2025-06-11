@@ -12,7 +12,7 @@ class TestApiClient:
         for el in data:
             assert el['division'] in range(5)
 
-    @pytest.mark.api_1
+    @pytest.mark.api
     def test_api_operating(self,
                            mock_server_response,
                            api_request_context: APIRequestContext) -> None:

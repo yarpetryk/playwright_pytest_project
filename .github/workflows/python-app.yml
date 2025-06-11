@@ -42,7 +42,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
-        path: junit_reports/
+        path: requirements.txt
+        overwrite: true
 
     - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3

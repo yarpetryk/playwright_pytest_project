@@ -43,7 +43,9 @@ jobs:
       if: always()
       with:
         name: Pytest report
-        path: pytest_reports/
+        path: |
+          pytest_reports/
+          logs/
         overwrite: true
         if-no-files-found: error
 

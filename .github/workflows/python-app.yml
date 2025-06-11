@@ -43,7 +43,7 @@ jobs:
       if: always()
       with:
         name: allure-report
-        path: allure_results/
+        path: pytest_results/
         overwrite: true
         if-no-files-found: error
 

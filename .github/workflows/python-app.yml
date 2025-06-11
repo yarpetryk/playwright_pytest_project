@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
-        path: junit-reports/
+        path: junit_reports/
 
     - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3

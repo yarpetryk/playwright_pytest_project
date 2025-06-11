@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: allure-report
+        name: Pytest report
         path: pytest_reports/
         overwrite: true
         if-no-files-found: error

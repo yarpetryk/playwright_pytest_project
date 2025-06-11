@@ -54,6 +54,7 @@ jobs:
         publish_branch: gh-pages
         publish_dir: allure-results/
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
+    - name: Run Allure report
       run: |
         allure serve ./allure_results
 

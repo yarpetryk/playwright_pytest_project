@@ -1,0 +1,2 @@
+INFO     root:conftest.py:28 The webpage https://portal.powerfox.energy/ has been loaded successfully
+INFO     root:conftest.py:33 User logged in successfully

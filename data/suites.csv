@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jun 11 12:35:28 GMT 2025","Wed Jun 11 12:35:28 GMT 2025","0","tests","test_base_assertion","TestBase","","","test_positive_assert",""
+"failed","Wed Jun 11 12:35:28 GMT 2025","Wed Jun 11 12:35:28 GMT 2025","1","tests","test_base_assertion","TestBase","","","test_negative_assert",""
+"passed","Wed Jun 11 12:35:28 GMT 2025","Wed Jun 11 12:35:28 GMT 2025","4","tests","test_user_email","TestUseEmail","","","test_user_email[chromium]",""
+"broken","Wed Jun 11 12:35:21 GMT 2025","Wed Jun 11 12:35:26 GMT 2025","5003","tests","test_device_ip_address","TestDeviceConfig","","","test_ip_address[chromium-1097bd711e4c]",""

@@ -28,9 +28,6 @@ jobs:
         pip install -r requirements.txt
         playwright install
 
-    - name: Install Allure command-line
-      run: npm install -g allure-commandline
-
     - name: Run tests
       run: |
         pytest -m smoke
@@ -49,33 +46,6 @@ jobs:
         path: |
           pytest_reports/
           logs/
+          allure-results/
         overwrite: true
         if-no-files-found: error
-
-    - name: Load Allure history
-      uses: actions/checkout@v4
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-pages
-        path: gh-pages-branch
-
-    - name: Build Allure Report
-      uses: simple-elf/allure-report-action@v1.8
-      id: allure-report
-      if: always()
-      with:
-        allure_results: allure-results
-        gh_pages: gh-pages-branch
-        allure_report: allure-report
-        allure_history: allure-history
-
-    - name: Deploy Allure Report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-report
-
-

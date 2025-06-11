@@ -1,5 +1,0 @@
-DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
-INFO     root:conftest.py:29 The webpage https://portal.powerfox.energy/ has been loaded successfully
-INFO     root:conftest.py:34 User logged in successfully
-INFO     root:conftest.py:37 /home/runner/work/playwright_pytest_project/playwright_pytest_project
-INFO     root:conftest.py:38 ['allure-results', 'pytest_reports', 'helpers', '.github', 'docs', '.gitignore', 'requirements.txt', 'index.html', 'tests', '.git', 'README.md', 'logs', 'pages', 'mock_data.html', 'pytest.ini']

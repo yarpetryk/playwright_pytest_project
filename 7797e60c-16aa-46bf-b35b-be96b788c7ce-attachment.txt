@@ -1,3 +1,0 @@
-DEBUG    root:test_base_assertion.py:15 a = 9, but b = 10
-WARNING  root:test_base_assertion.py:16 WARNING: Negative assertion
-ERROR    root:test_base_assertion.py:17 ERROR: Negative assertion
